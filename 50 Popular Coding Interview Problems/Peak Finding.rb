@@ -3,6 +3,9 @@
     This code returns the index of the peak value.
 =end
 
+#time Complexity O(logn)
+#space Complexity O(1)
+
 def finding_peak(arr)
     left = 0 
     right = arr.length() - 1

@@ -8,35 +8,42 @@ class Node
 end
 
 class LinkedList
-  def initialize(value)
-    @head = Node.new(value, nil)
+  attr_accessor :head, :tail
+
+  def initialize
+    @head = nil
+    @tail = nil
   end
 
-  def addition(value)
-    current_node = @head
+  def add_first(data)
+    @head = Node.new(data, @head)
+  end
 
-    while current_node.next_node != nil
-      current_node = current_node.next_node
+  def add_last(data)
+    node = Node.new(number)
+    if !@head
+      @head = node
+      @tail = node
+      return
+    end
+    last_node = get_last()
+    last_node.next_node = node
+    @tail = node
+  end
+
+  private
+
+  def get_last
+    return if !@head
+    node = @head
+
+    until node.next_node.nil?
+      node = node.next_node
     end
 
-    current_node.next_node = Node.new(value, nil)
-  end
-
-  def delete_node(value)
-    current_node = @head
-
-    if current_node.value == value
-      @head = current_node.next_node
-    else
-      
-    end
-  end
-
-  def find(value)
-
-  end
-
-  def print_list
-
+    return node
   end
 end
+
+list= LinkedList.new
+puts list
